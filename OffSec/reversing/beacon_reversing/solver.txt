@@ -1,0 +1,6 @@
+#open a port locally at 1234
+
+#1.) nc -l 1234
+#2.) type "we are the knights who say ni"
+#3.) receive flag
+

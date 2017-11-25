@@ -1,0 +1,4 @@
+- open binja
+- click and highlight 0xdoodfaceee
+- open hex view and xor highlighted bit with 0xffffffff
+- The flag will be visible
