@@ -11,7 +11,7 @@ for i in range(1,16):
     symbol = "func" + str(i)
     funcs[symbol] = e.symbols[symbol]
 
-def VelvetBash(start_addr = main, func = funcs["func3"]):
+def VelvetBash(start_addr, func):
     proj = angr.Project("RedVelvet")
     
     find = [
@@ -24,7 +24,8 @@ def VelvetBash(start_addr = main, func = funcs["func3"]):
     
     st = proj.factory.blank_state(addr=start_addr)
     
-    for i in ["W","h","a","t","_","A"]:
+    known =  ["W","h","a","t","_",]
+    for i in known:
         k = st.posix.files[0].read_from(1)
         st.solver.add(k == ord(i))
         
@@ -33,8 +34,8 @@ def VelvetBash(start_addr = main, func = funcs["func3"]):
 
     final = ex.found[0]
     flag = final.posix.dumps(0)
-    print(flag.rstrip("\x00"))
+    print(flag[len(known):].rstrip("\x00"))
     return flag
 
 if __name__ == "__main__":
-    VelvetBash(main, funcs['func5'])
+    VelvetBash(main, 0x401534)
