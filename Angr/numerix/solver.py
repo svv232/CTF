@@ -38,8 +38,8 @@ if __name__ == "__main__":
         (0x400967, print_flag),
     ]
 
-    for i in range(4):
+    for i in args:
         try:
-            numerix_smash(*args[i])
+            numerix_smash(*args)
         except:
             pass

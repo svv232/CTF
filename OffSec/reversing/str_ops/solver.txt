@@ -1,7 +1,0 @@
-gdb strops.bin
-b* at the address cmp rdx rax
-set $rax = rdx
-save rax
-continue
-
-save register value at each iteration

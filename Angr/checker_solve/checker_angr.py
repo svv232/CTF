@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from pwn import *
 import angr
 from binascii import b2a_uu

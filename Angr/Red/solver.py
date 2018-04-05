@@ -2,25 +2,15 @@ from pwn import *
 import angr
 
 e = ELF("RedVelvet")
-
 main = e.symbols["main"]
 exit = e.symbols["exit"]
 
-funcs = {}
-for i in range(1,16):
-    symbol = "func" + str(i)
-    funcs[symbol] = e.symbols[symbol]
-
 def VelvetBash(start_addr, func):
     proj = angr.Project("RedVelvet")
+
+    find = [func,]
     
-    find = [
-        func,
-    ]
-    
-    avoid = [
-        exit,
-    ]
+    avoid = [exit,]
     
     st = proj.factory.blank_state(addr=start_addr)
     
@@ -31,7 +21,6 @@ def VelvetBash(start_addr, func):
         
     sm = proj.factory.simulation_manager(st)
     ex = sm.explore(find=find, avoid=avoid)
-
     final = ex.found[0]
     flag = final.posix.dumps(0)
     print(flag[len(known):].rstrip("\x00"))
